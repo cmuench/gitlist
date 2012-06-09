@@ -30,6 +30,11 @@ $app->register(new Git\GitServiceProvider(), array(
 ));
 $app->register(new Application\UtilsServiceProvider());
 
+$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
+$app->register(new Silex\Provider\SessionServiceProvider());
+$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
+$app->mount('/auth', new Application\BasicAuthControllerProvider());
+
 // Add the md5() function to Twig scope
 $app['twig']->addFilter('md5', new Twig_Filter_Function('md5'));
 
